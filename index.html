@@ -9,8 +9,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<title>아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출</title>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다." name="description"/>
+<title>아파트 주택청약 가점 계산기</title>
+<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," name="description"/>
 <meta content="아파트 청약 가점 계산기, 청약 점수 계산, 무주택기간 가점, 부양가족 청약점수, 주택청약 모의계산, 청약홈 점수 계산, 84점 만점 가점" name="keywords"/>
 <link href="https://apartment-subscription-score-calc.enjoy-onepage.com/" rel="canonical"/>
 <!-- 파비콘 & PWA 매니페스트 -->
@@ -26,7 +26,7 @@
 <meta content="website" property="og:type"/>
 <meta content="청약가점계산기" property="og:site_name"/>
 <meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." property="og:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다." property="og:description"/>
+<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," property="og:description"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/" property="og:url"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/og-image.png" property="og:image"/>
 <meta content="800" property="og:image:width"/>
@@ -35,7 +35,7 @@
 <!-- 트위터 카드 (Twitter Card) -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." name="twitter:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다." name="twitter:description"/>
+<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," name="twitter:description"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
@@ -149,6 +149,25 @@
   }
 </style>
 
+<script id="math-guard">
+// Global Math & DOM Output Guard: prevents NaN / Infinity leaks to UI
+(function() {
+  const origToLocaleString = Number.prototype.toLocaleString;
+  Number.prototype.toLocaleString = function(locales, options) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToLocaleString.call(this, locales, options);
+  };
+  const origToFixed = Number.prototype.toFixed;
+  Number.prototype.toFixed = function(digits) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToFixed.call(this, digits);
+  };
+})();
+</script>
+<style id="ad-cls-shield">
+  .ad-bottom { min-height: 280px !important; }
+  .ad-bottom ins { min-height: 280px !important; }
+</style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
 <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
@@ -628,8 +647,8 @@
 <p class="text-xs text-gray-600">© 2026 아파트 청약 가점 계산기. All rights reserved.</p>
 </footer>
 <!-- 하단 대형 배너 (푸터 직전) -->
-<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;">
-<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block"></ins>
+<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;min-height:280px;">
+<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block;min-height:280px;"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 <!-- 하단 대형 배너 (푸터 직전) -->
@@ -747,7 +766,14 @@
     }
   </script>
 
-    <!-- E-E-A-T FAQ Section (16-5 헌법 준수) -->
+    <!-- ADSENSE START: mid -->
+<div class="ad-box ad-mid" style="max-width:1080px;margin:16px auto;padding:0 14px;text-align:center;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
+
+<!-- E-E-A-T FAQ Section (16-5 헌법 준수) -->
     <section class="mt-8 mb-8 space-y-3">
       <h2 class="text-xl font-bold text-gray-900 mb-4">자주 묻는 질문 (FAQ)</h2>
       <details class="bg-gray-50 p-4 rounded-xl border border-gray-200 group">
