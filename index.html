@@ -9,8 +9,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<title>아파트 주택청약 가점 계산기</title>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," name="description"/>
+<title>아파트 주택청약 가점 계산기 | 84점 만점 모의계산</title>
+<meta content="청약홈 공식 기준 무주택기간, 부양가족, 통장가입기간 가점을 합산해 84점 만점 청약 가점을 계산합니다." name="description"/>
 <meta content="아파트 청약 가점 계산기, 청약 점수 계산, 무주택기간 가점, 부양가족 청약점수, 주택청약 모의계산, 청약홈 점수 계산, 84점 만점 가점" name="keywords"/>
 <link href="https://apartment-subscription-score-calc.enjoy-onepage.com/" rel="canonical"/>
 <!-- 파비콘 & PWA 매니페스트 -->
@@ -25,8 +25,8 @@
 <!-- 오픈그래프 (OpenGraph) 메타 태그 -->
 <meta content="website" property="og:type"/>
 <meta content="청약가점계산기" property="og:site_name"/>
-<meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." property="og:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," property="og:description"/>
+<meta content="아파트 주택청약 가점 계산기 | 84점 만점 모의계산" property="og:title"/>
+<meta content="청약홈 공식 기준 무주택기간, 부양가족, 통장가입기간 가점을 합산해 84점 만점 청약 가점을 계산합니다." property="og:description"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/" property="og:url"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/og-image.png" property="og:image"/>
 <meta content="800" property="og:image:width"/>
@@ -34,8 +34,8 @@
 <meta content="ko_KR" property="og:locale"/>
 <!-- 트위터 카드 (Twitter Card) -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." name="twitter:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점)," name="twitter:description"/>
+<meta content="아파트 주택청약 가점 계산기 | 84점 만점 모의계산" name="twitter:title"/>
+<meta content="청약홈 공식 기준 무주택기간, 부양가족, 통장가입기간 가점을 합산해 84점 만점 청약 가점을 계산합니다." name="twitter:description"/>
 <meta content="https://apartment-subscription-score-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
@@ -369,7 +369,7 @@
     // 현재 날짜 설정
     const today = new Date();
     if (receiptDate) {
-        receiptDate.innerText = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
+        receiptDate.textContent = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
     }
 
     // 이벤트 리스너 설정
@@ -405,7 +405,7 @@
         let newCount = extraDependents + amount;
         if (newCount >= 0 && newCount <= 6) {
             extraDependents = newCount;
-            dependentCountSpan.innerText = `${extraDependents}명`;
+            dependentCountSpan.textContent = `${extraDependents}명`;
             updateAll();
         }
     }
@@ -455,11 +455,11 @@
     }
 
     function copyHousingResult() {
-        const score = receiptTotalScore ? receiptTotalScore.innerText : '0';
-        const hScore = receiptHomeless ? receiptHomeless.innerText : '';
-        const dScore = receiptDependents ? receiptDependents.innerText : '';
-        const bScore = receiptBankbook ? receiptBankbook.innerText : '';
-        const evalTxt = evaluationText ? evaluationText.innerText : '';
+        const score = receiptTotalScore ? receiptTotalScore.textContent : '0';
+        const hScore = receiptHomeless ? receiptHomeless.textContent : '';
+        const dScore = receiptDependents ? receiptDependents.textContent : '';
+        const bScore = receiptBankbook ? receiptBankbook.textContent : '';
+        const evalTxt = evaluationText ? evaluationText.textContent : '';
 
         const text = `[아파트 청약 가점 분석 결과]\n총점: ${score}점 / 84점 만점\n- 무주택 기간: ${hScore}\n- 부양가족: ${dScore}\n- 청약통장: ${bScore}\n평가: ${evalTxt}\n\n👉 내 청약 가점 확인하기: ${window.location.href}`;
         navigator.clipboard.writeText(text).then(() => {
